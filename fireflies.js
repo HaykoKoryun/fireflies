@@ -32,6 +32,14 @@
 
     var _maxO = opts.maxOpacity || 1;
 
+    var _color = opts.color || "#ffffff";
+    _color = hexToRgb(_color);
+    if(_color === null)
+    {
+      throw "Invaid color: " + opts.color;
+    }
+    _color = "rgba(" + _color.r + "," + _color.g + "," + _color.b + ",";
+
     var _paused = false;
 
     var draw = 0;
@@ -181,12 +189,12 @@
           0,
           firefly.x,
           firefly.y,
-          1
+          firefly.radius
         );
 
-        _gradient.addColorStop(0.0, 'rgba(238,180,28,' + 0.5 + ')');
-    		_gradient.addColorStop(0.5, 'rgba(238,180,28,' + 0.7 +')');
-    		_gradient.addColorStop(1.0, 'rgba(238,180,28,0)');
+        _gradient.addColorStop(0.0, _color + 0.7 + ")");
+    		_gradient.addColorStop(0.5, _color + 0.3 +")");
+    		_gradient.addColorStop(1.0, _color + "0)");
     		_ctx.fillStyle = _gradient;
     		_ctx.fill();
       }
@@ -201,6 +209,23 @@
     {
       requestAnimationFrame(_instance.render);
     }
+  }
+
+  // credit: http://stackoverflow.com/a/5624139/771466
+  function hexToRgb(hex)
+  {
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b)
+    {
+      return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
   }
 
   return fireflies;

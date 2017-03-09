@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function()
     autoRender: true,
     population: 100,
     minRadius: 3,
-    maxRadius: 10
+    maxRadius: 10,
+    color: "#ffffff"
   });
 });
