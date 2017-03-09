@@ -60,7 +60,7 @@
         re_boundy: false,
         radius: _minR + (Math.random() * (_maxR - _minR)),
         opacity: _minO + (Math.random() * (_maxO - _minO)),
-        opacityD: 0.001 + (Math.random() * 0.049)
+        opacityD: randomOpacityDelta()
       };
 
       _fireflies.push(firefly);
@@ -182,6 +182,18 @@
         _ctx.arc(firefly.x,firefly.y,firefly.radius,0,2*Math.PI);
         _ctx.closePath();
 
+        firefly.opacity += firefly.opacityD;
+        if(firefly.opacity < 0)
+        {
+          firefly.opacity = 0;
+          firefly.opacityD = randomOpacityDelta();
+        }
+        else if(firefly.opacity > 1)
+        {
+          firefly.opacity = 1;
+          firefly.opacityD = randomOpacityDelta() * -1;
+        }
+
         _gradient = _ctx.createRadialGradient
         (
           firefly.x,
@@ -189,11 +201,11 @@
           0,
           firefly.x,
           firefly.y,
-          firefly.radius
+          firefly.radius * firefly.opacity
         );
 
-        _gradient.addColorStop(0.0, _color + 0.7 + ")");
-    		_gradient.addColorStop(0.5, _color + 0.3 +")");
+        _gradient.addColorStop(0.0, _color + 0.6 + ")");
+    		_gradient.addColorStop(0.3, _color + 0.3 +")");
     		_gradient.addColorStop(1.0, _color + "0)");
     		_ctx.fillStyle = _gradient;
     		_ctx.fill();
@@ -209,6 +221,11 @@
     {
       requestAnimationFrame(_instance.render);
     }
+  }
+
+  function randomOpacityDelta()
+  {
+    return 0.001 + (Math.random() * 0.029);
   }
 
   // credit: http://stackoverflow.com/a/5624139/771466

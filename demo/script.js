@@ -9,6 +9,6 @@ document.addEventListener("DOMContentLoaded", function()
     population: 100,
     minRadius: 3,
     maxRadius: 10,
-    color: "#ffffff"
+    color: "#cdde0b"
   });
 });
