@@ -1,0 +1,15 @@
+{
+  "name": "fireflies",
+  "version": "1.0.0",
+  "description": "HTML5 Canvas Fireflies",
+  "main": "fireflies.js",
+  "repository": "https://github.com/HaykoKoryun/fireflies.git",
+  "author": "Hayko Koryun <haykokoryun@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  },
+  "scripts": {
+    "demo" : "node node_modules/http-server/bin/http-server"
+  }
+}
