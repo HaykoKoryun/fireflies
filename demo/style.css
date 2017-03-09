@@ -50,3 +50,50 @@ h1
   font-weight: bold;
   text-decoration: none;
 }
+
+#markers
+{
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.marker
+{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+
+.marker .ring
+{
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  border: solid #cdde0b 3px;
+  border-radius: 50%;
+  -webkit-animation: blip 2s infinite linear;
+  animation: blip 2s infinite linear;
+}
+
+@-webkit-keyframes blip
+{
+  0%
+  {
+    transform: scale3d(0,0,1);
+    filter: opacity(1);
+    border-width: 10px;
+  }
+
+  100%
+  {
+    transform: scale3d(1,1,1);
+    filter: opacity(0.2);
+    border-width: 2px;
+  }
+}

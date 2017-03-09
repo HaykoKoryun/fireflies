@@ -42,8 +42,6 @@
 
     var _paused = false;
 
-    var draw = 0;
-
     var _fireflies = [];
 
     var _gradient;
@@ -64,11 +62,6 @@
       };
 
       _fireflies.push(firefly);
-    }
-
-    _instance.updateDraw = function(newdraw)
-    {
-      draw = newdraw;
     }
 
     _instance.render = function()
@@ -168,12 +161,10 @@
         {
           var tfocus = _foci[Math.round(Math.random() * (_foci.length - 1))];
           var focus = {x:tfocus.x, y:tfocus.y};
-          focus.x = (_canvas.width / 2) + focus.x;
-          focus.y = _canvas.height - focus.y;
           var vfx = focus.x - firefly.x;
           var vfy = focus.y - firefly.y;
-          vfx *= draw;
-          vfy *= draw;
+          vfx *= tfocus.gravity;
+          vfy *= tfocus.gravity;
           firefly.x += vfx;
           firefly.y += vfy;
         }
