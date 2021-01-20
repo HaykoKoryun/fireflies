@@ -7,7 +7,7 @@
   "author": "Hayko Koryun <haykokoryun@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "gsap": "^1.19.1",
+    "gsap": "^3.6.0",
     "http-server": "^0.9.0",
     "node-minify": "^2.0.3"
   },
